@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leah Tenebroso</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">Leah</a>
+        <nav>
+            <a href="#hero">Home</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <button id="theme-toggle">Toggle Mode</button>
+    </header>
+
+    <section id="hero">
+        <div id="hero-text">
+            <h2><span class="name">Hello, I'm Leah</span></h2>
+            <p class="tagline">Building efficient, scalable, and user-friendly software solutions.</p>
+
+            <button class="hire-me">Hire Me</button>
+        </div>
+        <img src="image.png" alt="Hero Image">
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+            <div class="skill">
+                <i class="fas fa-code"></i>
+                <h3>Frontend Development</h3>
+                <p>Creating responsive and interactive user interfaces.</p>
+            </div>
+            <div class="skill">
+                <i class="fas fa-server"></i>
+                <h3>Backend Development</h3>
+                <p>Building scalable and secure server-side applications.</p>
+            </div>
+            <div class="skill">
+                <i class="fas fa-paint-brush"></i>
+                <h3>UI/UX Design</h3>
+                <p>Designing intuitive and engaging user experiences.</p>
+            </div>
+            <div class="skill">
+                <i class="fas fa-database"></i>
+                <h3>Database Management</h3>
+                <p>Optimizing data storage and retrieval for efficiency.</p>
+            </div>
+            <div class="skill">
+                <i class="fas fa-cloud"></i>
+                <h3>DevOps</h3>
+                <p>Automating workflows and deploying scalable applications.</p>
+            </div>
+        </div>
+    </section>
+    
+    
+
+    <section id="projects">
+        <h2>Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project">
+                <img src="project1.jpg" alt="Project 1">
+                <h3>Modern E-Commerce Platform</h3>
+                <p>A fully responsive online store with seamless checkout experience.</p>
+            </div>
+            <div class="project">
+                <img src="project2.jpg" alt="Project 2">
+                <h3>Analytics Dashboard</h3>
+                <p>Interactive admin dashboard with real-time data visualization.</p>
+            </div>
+            <div class="project">
+                <img src="project3.jpg" alt="Project 3">
+                <h3>Fitness Tracking App</h3>
+                <p>Cross-platform mobile application for tracking workouts.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form class="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+
+    <script>
+         document.getElementById("theme-toggle").addEventListener("click", function() {
+            document.body.classList.toggle("light-mode");
+        });
+        
+        // Intersection Observer for detecting when sections come into view
+        const sections = document.querySelectorAll('section');
+        
+        const observerOptions = {
+            root: null, // Use the viewport as the root
+            threshold: 0.1 // Trigger when 10% of the section is in view
+        };
+    
+        const observerCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add the 'visible' class to the section when it comes into view
+                    entry.target.classList.add('visible');
+                }
+            });
+        };
+    
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+    
+        sections.forEach(section => {
+            observer.observe(section); // Observe each section
+        });
+    </script>
+    
+</body>
+</html>
