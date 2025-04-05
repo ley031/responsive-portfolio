@@ -16,17 +16,25 @@
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
         </nav>
-        <button id="theme-toggle">Toggle Mode</button>
+        
     </header>
 
-    <section id="hero">
-        <div id="hero-text">
-            <h2><span class="name">Hello, I'm Leah</span></h2>
-            <p class="tagline">Building efficient, scalable, and user-friendly software solutions.</p>
-
-            <button class="hire-me">Hire Me</button>
+    <section class="home">
+        <div class="home-img">
+            <img src="image.png" alt="">
         </div>
-        <img src="image.png" alt="Hero Image">
+        <div class="home-content">
+            <h1>Hi, It's <span>Leah</span></h1>
+            <h3 class="typing-text">I'm a <span></span></h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus labore dolores esse. Odit similique doloribus tenetur doloremque, sunt commodi in ipsa repudiandae debitis deleniti blanditiis quibusdam quaerat neque asperiores ea.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+            <a href="#" class="btn">Hire me</a>
+        </div>
     </section>
 
     <section id="skills">
@@ -95,9 +103,7 @@
 
 
     <script>
-         document.getElementById("theme-toggle").addEventListener("click", function() {
-            document.body.classList.toggle("light-mode");
-        });
+         
         
         // Intersection Observer for detecting when sections come into view
         const sections = document.querySelectorAll('section');
