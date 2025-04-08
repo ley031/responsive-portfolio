@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,13 +14,21 @@
 <body>
     <header>
         <a href="#" class="logo">Leah</a>
-        <i class="fa-solid fa-bars" class="menu-icon"></i>
+        
         <nav>
             <a href="#hero" class="active">Home</a>
             <a href="#skills">Skills</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
         </nav>
+        <div class="toggle-container">
+            <input type="checkbox" id="theme-toggle" class="theme-toggle">
+            <label for="theme-toggle" class="toggle-label">
+              <span class="toggle-icon dark">🌙</span>
+              <span class="toggle-icon light">☀️</span>
+            </label>
+        </div>
+        
         
     </header>
 
@@ -27,7 +39,9 @@
         <div class="home-content">
             <h1>Hi, It's <span>Leah</span></h1>
             <h3 class="typing-text">I'm a <span></span></h3>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus labore dolores esse. Odit similique doloribus tenetur doloremque, sunt commodi in ipsa repudiandae debitis deleniti blanditiis quibusdam quaerat neque asperiores ea.</p>
+            <p>
+                As a dedicated developer focused on clean design and robust functionality, I create intuitive and effective solutions for both web and mobile applications. My projects showcase a commitment to quality and innovation—explore and see how we can work together to bring ideas to life.
+            </p>
             <div class="social-icons">
                 <a href="#"><i class="fa-brands fa-linkedin"></i></a>
                 <a href="#"><i class="fa-brands fa-github"></i></a>
@@ -73,21 +87,30 @@
 
     <section id="projects">
         <h2>Featured Projects</h2>
-        <div class="projects-grid">
-            <div class="project">
-                <img src="project1.jpg" alt="Project 1">
-                <h3>Modern E-Commerce Platform</h3>
-                <p>A fully responsive online store with seamless checkout experience.</p>
+        <div class="work-list">
+            <div class="work">
+                <img src="images/project1.jpg">
+                <div class="layer">
+                    <h4>E-Commerce Platform</h4>
+                    <p>A fully responsive online store with seamless checkout experience.</p>
+                    <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                </div>
             </div>
-            <div class="project">
-                <img src="project2.jpg" alt="Project 2">
-                <h3>Analytics Dashboard</h3>
-                <p>Interactive admin dashboard with real-time data visualization.</p>
+            <div class="work">
+                <img src="images/project2.jpg">
+                <div class="layer">
+                    <h4>Analytics Dashboard</h4>
+                    <p>Interactive admin dashboard with real-time data visualization.</p>
+                    <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                </div>
             </div>
-            <div class="project">
-                <img src="project3.jpg" alt="Project 3">
-                <h3>Fitness Tracking App</h3>
-                <p>Cross-platform mobile application for tracking workouts.</p>
+            <div class="work">
+                <img src="images/project3.jpg">
+                <div class="layer">
+                    <h4>Fitness Tracking App</h4>
+                    <p>Cross-platform mobile application for tracking workouts.</p>
+                    <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                </div>
             </div>
         </div>
     </section>
@@ -106,12 +129,6 @@
         </form>
     </section>
     <footer class="footer">
-        <div class="social">
-            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="#"><i class="fa-brands fa-github"></i></a>
-            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-        </div>
         <ul class="list">
             <li><a href="#">FAQ</a></li>
             <li><a href="#">Service</a></li>
@@ -127,31 +144,55 @@
 
 
     <script>
-         
-        
-        // Intersection Observer for detecting when sections come into view
+        // Intersection Observer for section animations
         const sections = document.querySelectorAll('section');
-        
         const observerOptions = {
-            root: null, // Use the viewport as the root
-            threshold: 0.1 // Trigger when 10% of the section is in view
+            root: null,
+            threshold: 0.1
         };
-    
         const observerCallback = (entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Add the 'visible' class to the section when it comes into view
                     entry.target.classList.add('visible');
                 }
             });
         };
-    
         const observer = new IntersectionObserver(observerCallback, observerOptions);
+        sections.forEach(section => observer.observe(section));
     
-        sections.forEach(section => {
-            observer.observe(section); // Observe each section
+        
+
+        // Get the toggle checkbox element
+        
+        const toggle = document.getElementById('theme-toggle');
+
+        // Check if a theme preference is stored in localStorage
+        if (localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light-mode');
+        toggle.checked = true;
+        }
+
+        // Listen for changes to the toggle
+        toggle.addEventListener('change', () => {
+        if (toggle.checked) {
+            // Add light-mode class to the body
+            document.body.classList.add('light-mode');
+            localStorage.setItem('theme', 'light');  // Save light mode preference
+        } else {
+            // Remove light-mode class from the body
+            document.body.classList.remove('light-mode');
+            localStorage.setItem('theme', 'dark');   // Save dark mode preference
+        }
         });
+
+        
+
+
+
+
     </script>
+    
+    
     
 </body>
 </html>

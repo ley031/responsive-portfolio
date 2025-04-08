@@ -1,523 +1,734 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    border: none;
-    outline: none;
-    scroll-behavior: smooth;
-    font-family: 'Poppins', sans-serif;
+/* ===========================================
+   GLOBAL STYLES & RESET
+   =========================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  scroll-behavior: smooth;
+  font-family: 'Poppins', sans-serif;
 }
 
-html{
-    font-size: 62.5%;
-    overflow: hidden;
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 
-body{
+/* ===========================================
+   DARK MODE (DEFAULT) BASE STYLES
+   =========================================== */
+body {
+  width: 100%;
+  height: 100vh;
+  overflow-x: hidden;
+  background-color: black;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.3s, color 0.3s;
+  background: url(images/background.png) no-repeat center center fixed;
+  background-size: cover;
+}
+
+body.light-mode {
     width: 100%;
     height: 100vh;
     overflow-x: hidden;
-    background-color: black;
-    color: white;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     font-family: 'Poppins', sans-serif;
     transition: background 0.3s, color 0.3s;
+    background: url(images/background1.png) no-repeat center center fixed;
+    background-size: cover;
+  }
+
+/* -------------------------------------------
+   Header & Navigation
+   ------------------------------------------- */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 9%;
+  background: rgba(0, 0, 0, 0.7);
+  filter: drop-shadow(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
 }
 
-
-/* Header Styling */
-header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 1rem 9%;
-    background: rgba(0,0,0,0.7);
-    filter: drop-shadow(10px);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 100;
+.logo {
+  font-size: 3rem;
+  color: red;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.5s ease;
 }
 
-.logo{
-    font-size: 3rem;
-    color:  red;
-    font-weight: 800;
-    cursor: pointer;
-    transition: 0.5s ease;
+.logo:hover {
+  transform: scale(1.1);
 }
 
-.logo:hover{
-    transform: scale(1.1);
-}
-
-nav a{
-    font-size: 1.8rem;
-    color: white;
-    margin-left: 4rem;
-    font-weight: 500;
-    transition: 0.3s ease;
-    border-bottom: 3px solid transparent;
+nav a {
+  font-size: 1.8rem;
+  color: white;
+  margin-left: 4rem;
+  font-weight: 500;
+  transition: 0.3s ease;
+  border-bottom: 3px solid transparent;
 }
 
 nav a:hover,
-nav a.active{
-    color: red;
-    border-bottom: 3px solid  red;
+nav a.active {
+  color: red;
+  border-bottom: 3px solid red;
 }
-#menu-icon{
-    font-size: 3.6rem;
-    color: red;
-    border-bottom: 3px solid red;
+
+#menu-icon {
+  font-size: 3.6rem;
+  color: red;
+  border-bottom: 3px solid red;
+  display: none;
+}
+
+/* Responsive Navigation */
+@media (max-width: 995px) {
+  nav {
+    position: absolute;
     display: none;
-}
-@media(max-width:995px){
-    nav{
-        position: absolute;
-        display: none;
-        top: 0;
-        right: 0;
-        width: 40%;
-        border-left: 3px solid red;
-        border-bottom: 3px solid red;
-        border-bottom-left-radius: 2rem;
-        padding: 1rem solid;
-        background-color: #161616;
-        border-top: 0.1rem solid rgba(0,0,0,0.1);
-    }
-
-    nav.active{
-        display: block;
-    }
-
-    nav a{
-        display: block;
-        font-size: 2rem;
-        margin: 3rem 0;
-    }
-
-    nav a:hover,
-    nav a.active{
-        padding: 1rem;
-        border-radius: 0.5rem;
-        border-bottom: 0.5rem solid #b74b4b;
-    }
-}
-
-
-
-
-section{
-    min-height: 100vh;
-    padding: 5rem 9% 5rem;
-}
-
-.home{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8rem;
-    background-color: black;
-}
-
-.home .home-content h1{
-    font-size: 6rem;
-    font-weight: 700;
-    line-height: 1.3;
-}
-
-span{
-    color: red;
-}
-
-.home-content h3{
-    font-size: 4rem;
-    margin-bottom: 1rem;
-    font-weight: 700;
-}
-
-.home-content p{
-    font-size: 1.6rem;
-}
-
-.home-img{
-    border-radius: 50%;
-}
-
-.home-img img{
-    position: relative;
-    width: 32vw;
-    border-radius: 50%;
-    box-shadow: 0 0 25px solid red;
-    cursor: pointer;
-    transition: 0.2s linear;
-}
-
-.home-img img:hover{
-    font-size: 1.8rem;
-    font-weight: 500;
-}
-
-.social-icons a{
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 4rem;
-    height: 4rem;
-    background-color: transparent;
-    border: 0.2rem solid red;
+    top: 0;
+    right: 0;
+    width: 40%;
+    border-left: 3px solid red;
+    border-bottom: 3px solid red;
+    border-bottom-left-radius: 2rem;
+    padding: 1rem;
+    background-color: #161616;
+    border-top: 0.1rem solid rgba(0, 0, 0, 0.1);
+  }
+  nav.active {
+    display: block;
+  }
+  nav a {
+    display: block;
     font-size: 2rem;
-    border-radius: 50%;
-    margin: 3rem 1.5rem 3rem 0;
-    transition: 0.3s ease;
-    color: red;
+    margin: 3rem 0;
+  }
+  nav a:hover,
+  nav a.active {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border-bottom: 0.5rem solid #b74b4b;
+  }
 }
 
-.social-icons a:hover{
-    color: black;
-    transform: scale(1.3) translateY(-5px);
-    background-color: red;
-    box-shadow: 0  0 25px red;
+/* -------------------------------------------
+   Section & Animation Base Styles
+   ------------------------------------------- */
+section {
+  padding: 5rem 9%;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
-.btn{
-    display: inline-block;
-    padding: 1rem 2.8rem;
-    background-color: black;
-    border-radius: 4rem;
-    font-size: 1.6rem;
-    color: red;
-    letter-spacing: 0.3rem;
-    font-weight: 600;
-    border: 2px solid red;
-    transition: 0.3s ease;
-    cursor: pointer;
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.btn:hover{
-    transform: scale3d(1.03);
-    background-color: red;
-    color: black;
-    box-shadow: 0 0 25px red;
+/* -------------------------------------------
+   Home Section
+   ------------------------------------------- */
+.home {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10rem;
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 1;
 }
 
-.typing-text{
+.home::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+.home .home-content h1 {
+  font-size: 6rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.home .home-content h3 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.home .home-content p {
+  font-size: 1.6rem;
+}
+
+.home-img {
+  border-radius: 50%;
+}
+
+.home-img img {
+  position: relative;
+  width: 32vw;
+  border-radius: 50%;
+  box-shadow: 0 0 25px solid red;
+  cursor: pointer;
+  transition: 0.2s linear;
+  border: 2px solid rgba(255, 0, 0, 0.284);
+
+}
+
+.home-img img:hover {
+  transform: scale(1.01);
+}
+
+/* Typing text animation */
+.typing-text {
     font-size: 34px;
     font-weight: 600;
     min-width: 280px;
-}
-
-.typing-text span{
+  }
+  
+  .typing-text span {
+    /* Ensure the span is inline-block so its pseudo-elements flow in-line */
+    display: inline-block;
     position: relative;
-}
-
-.typing-text span::before{
+  }
+  
+  /* Animated text before the cursor */
+  .typing-text span::before {
     content: "software Developer";
     color: red;
     animation: words 20s infinite;
-}
-
-.typing-text span::after{
+  }
+  
+  /* Blinking cursor, placed as an inline element after the animated text */
+  .typing-text span::after {
     content: "";
-    background-color: black;
-    position: absolute;
-    width: calc(100% + 8px);
-    height: 100%;
-    border-left: 3px solid black;
-    right: -8;
-    animation: cursor 0.6s infinite;
-}
-
-@keyframes cursor{
-    to{
-        border-left: 3px solid red;
-    }
-}
-
-@keyframes words{
-    0%, 20%{
-        content: "Web Developer";
-    }
-    21%, 40%{
-        content: "Developer";
-    }
-    41%, 60%{
-        content: "Web Designer";
-    }
-    61%, 80%{
-        content: "UI/UX Designer";
-    }
-    81%, 100%{
-        content: "Content Creator";
-    }
-}
-
-@media (max-width: 1000px){
-    .home{
-        gap: 4rem;
-    }
-}
-
-@media(max-width:995px){
-    .home{
-        flex-direction: column;
-        margin: 5rem 4rem;
-    }
-
-    .home .home-content h3{
-        font-size: 2.5rem;
-    }
-
-    .home-content h1{
-        font-size: 5rem;
-    }
-    .home-img img {
-        width: 70vw;
-        margin-top: 4rem;
-        }
-}
-.home-img {
-    border-radius: 50%;
-}
+    display: inline-block;
+    vertical-align: middle;
+    width: 3px;
+    height: 1em; /* Adjust to match the font size */
     
-.home-img img {
-position: relative;
-width: 32vw;
-border-radius: 50%;
-box-shadow: 0 0 25px var( -- main-color);
-cursor: pointer;
+    margin-left: 2px; /* Space between text and cursor */
+    animation: cursor 0.6s infinite;
+  }
+  
+
+@keyframes cursor {
+  to {
+    border-left: 3px solid red;
+  }
 }
 
-.home-img img:hover{
-transform: scale(1.01);
-filter: drop-shadow( 0 0 25px var( -- main-color));
+@keyframes words {
+  0%, 20% {
+    content: "Web Developer";
+  }
+  21%, 40% {
+    content: "Developer";
+  }
+  41%, 60% {
+    content: "Web Designer";
+  }
+  61%, 80% {
+    content: "UI/UX Designer";
+  }
+  81%, 100% {
+    content: "Content Creator";
+  }
 }
 
+/* Responsive adjustments for Home Section */
+@media (max-width: 1000px) {
+  .home {
+    gap: 4rem;
+  }
+}
+@media (max-width: 995px) {
+  .home {
+    flex-direction: column;
+    margin: 5rem 4rem;
+  }
+  .home .home-content h3 {
+    font-size: 2.5rem;
+  }
+  .home .home-content h1 {
+    font-size: 5rem;
+  }
+  .home-img img {
+    width: 70vw;
+    margin-top: 4rem;
+  }
+}
+
+/* -------------------------------------------
+   Social Icons & Button
+   ------------------------------------------- */
+.social-icons a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  height: 4rem;
+  background-color: transparent;
+  border: 0.2rem solid red;
+  font-size: 2rem;
+  border-radius: 50%;
+  margin: 3rem 1.5rem 3rem 0;
+  transition: 0.3s ease;
+  color: red;
+}
+
+.social-icons a:hover {
+  color: black;
+  transform: scale(1.3) translateY(-5px);
+  background-color: red;
+  box-shadow: 0 0 25px red;
+}
+
+.btn {
+  display: inline-block;
+  padding: 1rem 2.8rem;
+  background-color: black;
+  border-radius: 4rem;
+  font-size: 1.6rem;
+  color: red;
+  letter-spacing: 0.3rem;
+  font-weight: 600;
+  border: 2px solid red;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: scale(1.03);
+  color: black;
+  background-color: red;
+  box-shadow: 0 0 25px red;
+}
+
+/* -------------------------------------------
+   Skills Section
+   ------------------------------------------- */
 #skills {
-    text-align: center;
-    padding: 50px;
-    background: black;
+  text-align: center;
+  background: black;
+  padding: 70px;
+  font-size: 13px;
+  font-weight: 300;
+  border-radius: 10px;
+  transition: background 0.5s, transform 0.5s;
 }
-
-.skill i {
-    font-size: 2rem;
-    color: red;
-    margin-bottom: 10px;
-}
-
 
 #skills h2 {
-    font-size: 2.5rem;
-    color: white;
-    text-transform: uppercase;
-}
-
-.skills-grid {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-top: 30px;
+  font-size: 2.5rem;
+  color: white;
+  text-transform: uppercase;
 }
 
 .skill {
-    background: #222;
-    color: white;
-    padding: 20px;
-    width: 200px;
-    text-align: center;
-    border-radius: 10px;
-    transition: transform 0.3s, background 0.3s;
+  background: #222;
+  color: white;
+  padding: 20px;
+  width: 200px;
+  text-align: center;
+  border-radius: 10px;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.skill i {
+  font-size: 5rem;
+  color: red;
+  margin-bottom: 15px;
 }
 
 .skill:hover {
-    transform: scale(1.05);
-    background: #333;
+  background: rgba(203, 52, 41, 0.25);
+  transform: translateY(-10px);
+  border: 2px solid red;
+  box-shadow: 0 0 25px red;
 }
 
+.skills-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+/* -------------------------------------------
+   Projects Section
+   ------------------------------------------- */
 #projects {
-    text-align: center;
-    padding: 50px;
-    background: black;
+  text-align: center;
+  padding: 50px;
+  background: black;
 }
 
 #projects h2 {
-    font-size: 2.5rem;
-    color: white;
-    text-transform: uppercase;
-    margin-bottom: 20px;
+  font-size: 2.5rem;
+  color: white;
+  text-transform: uppercase;
+  margin-bottom: 20px;
 }
 
-.projects-grid {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
+.work-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 40px;
+  margin-top: 50px;
 }
 
-.project {
-    background: #222;
-    color: white;
-    padding: 20px;
-    width: 300px;
-    text-align: center;
-    border-radius: 10px;
-    transition: transform 0.3s, background 0.3s;
+.work {
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 25px red;
 }
 
-.project img {
-    width: 100%;
-    border-radius: 10px;
-    margin-bottom: 10px;
+.work img {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+  transition: transform 0.5s;
 }
 
-.project:hover {
-    transform: scale(1.05);
-    background: #333;
+.work:hover img {
+  transform: scale(1.1);
 }
 
-/* Updated Contact Section */
-.contact h2{
+.layer {
+  width: 100%;
+  height: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), #ff1919);
+  border-radius: 10px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 40px;
+  text-align: center;
+  font-size: 14px;
+  transition: height 0.5s;
+}
+
+.layer h4 {
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.layer a {
+  margin-top: 20px;
+  color: #ff004f;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 60px;
+  background: #fff;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.work:hover .layer {
+  height: 100%;
+}
+
+/* -------------------------------------------
+   Contact Section
+   ------------------------------------------- */
+.contact {
+  padding: 5rem 9%;
+}
+
+.contact h2 {
+  margin-bottom: 3rem;
+  text-align: center;
+  font-size: 2rem;
+  color: white;
+  text-transform: uppercase;
+}
+.contact span {
     margin-bottom: 3rem;
-    columns: white;
     text-align: center;
     font-size: 2rem;
+    color: rgb(255, 0, 0);
+    text-transform: uppercase;
+  }
+
+.contact form {
+  max-width: 70rem;
+  margin: 1rem auto 3rem;
+  text-align: center;
 }
-.contact form{
-    max-width: 70rem;
-    margin: 1rem auto;
-    margin-bottom: 3rem; 
-    text-align: center;
+
+.contact form .input-box {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
-.contact form .input-box{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
+
 .contact form .input-box input,
-.contact form textarea{
-    width: 100%;
-    padding: 1.5rem;
-    font-size: 1.6rem;
-    color: white;
-    background: black;
-    border-radius: 0.8rem;
-    border:2px solid red;
-    margin:1rem 0;
-    resize: none;
-}
-.contact form .btn{
-    margin-top: 2rem;
+.contact form textarea {
+  width: 100%;
+  padding: 1.5rem;
+  font-size: 1.6rem;
+  color: white;
+  background: black;
+  border-radius: 0.8rem;
+  border: 2px solid red;
+  margin: 1rem 0;
+  resize: none;
 }
 
-.footer{
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    padding: 40px 0;
-    background-color: red;
-
-}
-.footer.social {
-    text-align: center;
-    padding-bottom: 25px;
-    color: black;
+.contact form .btn {
+  margin-top: 2rem;
 }
 
-.footer .social a {
-    font-size: 25px;
-    color: black;
-    border: 2px solid black;
-    width: 42px;
-    height: 42px;
-    display: inline-block;
-    text-align: center;
-    border-radius: 50%;
-    margin: 0 10px;
-    transition: 0.3s ease;
-}
-.footer .social a:hover{
-    transform: scale(1.2)translateY(-5px);
-    background: black;
-    color: red;
-}
-footer ul{
-    margin-top: 0;
-    padding: 0;
-    font-size: 18px;
-    line-height: 1.8;
-    margin-bottom: 0;
-    text-align: center;
+/* -------------------------------------------
+   Footer
+   ------------------------------------------- */
+.footer {
+  padding: 20px 0;
+  background-color: red;
+  text-align: center;
 }
 
-.footer ul li a{
-    color: black;
-    border-bottom: 3px solid transparent;
-    transition: 0.3s ease;
+.footer ul {
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 0;
 }
 
-.footer ul li a:hover{
-    border-bottom: 3px solid black;
-
+.footer ul li {
+  display: inline-block;
+  padding: 0 20px;
 }
 
-.footer ul li{
-    display: inline-block;
-    padding: 0 15px;
+.footer ul li a {
+  color: black;
+  border-bottom: 3px solid transparent;
+  transition: 0.3s ease;
 }
-/* Custom Scrollbar */
+
+.footer ul li a:hover {
+  border-bottom: 3px solid black;
+}
+
+/* -------------------------------------------
+   Custom Scrollbar
+   ------------------------------------------- */
 ::-webkit-scrollbar {
-    width: 12px;
+  width: 12px;
 }
-
-
 
 ::-webkit-scrollbar-thumb {
-    background-color: red;
-    border-radius: 10px;
-    
+  background-color: red;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-color: #f1f1f1;
+  background-color: #f1f1f1;
+}
+
+/* ===========================================
+   TOGGLE SWITCH STYLING (DARK & LIGHT)
+   =========================================== */
+.toggle-container {
+  display: inline-flex;
+  align-items: center;
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  width: 60px;
+  height: 30px;
+  margin: 0;
+  z-index: 200;
+}
+
+.theme-toggle {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.toggle-label {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid red;
+  border-radius: 30px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  overflow: hidden;
+  backdrop-filter: blur(2px);
+}
+
+.toggle-icon {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 22px;
+  width: 22px;
+  border-radius: 50%;
+  top: 3px;
+  font-size: 14px;
+  color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px red;
+}
+
+.toggle-icon.dark {
+  background-color: #161616;
+  left: 4px;
+  transform: rotate(0deg);
+  opacity: 1;
+}
+
+.toggle-icon.light {
+  background-color: red;
+  color: black;
+  left: 4px;
+  opacity: 0;
+  transform: rotate(180deg);
+}
+
+.toggle-label:hover {
+  box-shadow: 0 0 10px red;
+}
+
+/* -------------------------------------------
+   LIGHT MODE OVERRIDES
+   (Activate when "light-mode" class is added to the body)
+   ------------------------------------------- */
+
+  
+body.light-mode h2 {
+    color: #ff0000 !important;
+}
+body.light-mode h4 {
+    color: #ffffff !important;
+}
+body.light-mode .layer p {
+    color: #ffffff !important;
+}
+  
+body.light-mode header {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+body.light-mode .logo {
+  color: red;
+}
+
+body.light-mode nav a {
+  color: #000;
+}
+
+body.light-mode nav a:hover,
+body.light-mode nav a.active {
+  color: red;
+  border-bottom: 3px solid red;
 }
 
 
-/* Initial hidden state for sections */
-section {
-    opacity: 0;
-    transform: translateY(50px); /* Start sections slightly down */
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Smooth transition */
+
+/* Optionally adjust overlays & backgrounds */
+body.light-mode .home::before {
+  filter: brightness(90%);
 }
 
-/* Add this class dynamically when the section comes into view */
-section.visible {
-    opacity: 1;
-    transform: translateY(0); /* Move the section to its normal position */
+body.light-mode .btn {
+  background-color: #fff;
+  color: red;
+  border: 2px solid red;
 }
 
-/* Animation when scrolling up */
-@keyframes scrollUp {
-    0% { opacity: 0; transform: translateY(50px); }
-    100% { opacity: 1; transform: translateY(0); }
+body.light-mode #skills {
+  background: #fff;
 }
 
-/* Animation when scrolling down */
-@keyframes scrollDown {
-    0% { opacity: 0; transform: translateY(-50px); }
-    100% { opacity: 1; transform: translateY(0); }
+body.light-mode .skill {
+  background: #f2f2f2;
+  color: #000;
 }
 
-/* Assign animation classes to sections */
-section.scroll-up {
-    animation: scrollUp 1s forwards;
+body.light-mode #projects,
+body.light-mode .contact {
+  background: #fff;
 }
 
-section.scroll-down {
-    animation: scrollDown 1s forwards;
+body.light-mode .contact form .input-box input,
+body.light-mode .contact form textarea {
+  background: #fff;
+  color: #000;
 }
 
+/* Toggle Switch adjustments for Light Mode */
+.light-mode .toggle-label {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-color: red;
+}
+
+.light-mode .toggle-icon.dark {
+  left: 34px;
+  opacity: 0;
+  transform: rotate(180deg);
+}
+
+.light-mode .toggle-icon.light {
+  left: 34px;
+  opacity: 1;
+  background-color: red;
+  color: black;
+  transform: rotate(0deg);
+}
+
+
+/* Override cursor style for light mode */
+body.light-mode .typing-text span::after {
+    border-left: 3px solid black;
+  }
 
